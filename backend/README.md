@@ -3,6 +3,8 @@
 - npm init -y
 - npm i express nodemon cors mongoose body-parser
 - npm i dotenv --save
+- npm i concurrently
+
 - npm i jsonwebtoken
 - npm i jwt-decode
 
