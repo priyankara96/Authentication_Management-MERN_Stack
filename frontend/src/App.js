@@ -4,6 +4,7 @@ import { RequestContextProvider } from "./services/RequestContext";
 import { UserContextProvider } from "./services/UserContext";
 
 import Header from "../src/components/Header";
+import Footer from "../src/components/Footer";
 
 import Home1 from "./components/Home1";
 
@@ -24,6 +25,7 @@ export default class App extends Component {
                     <Route path="/AboutUs" exact component={AboutUs} />
                     <Route path="/ContactUs" exact component={ContactUs} />
 
+                  <Footer />
               </div>
             </BrowserRouter>
           </UserContextProvider>
