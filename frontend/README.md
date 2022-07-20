@@ -9,3 +9,5 @@
 - npm i react-icons
 - npm i antd
 - npm i sweetalert
+- npm i jspdf
+- npm i jspdf-autotable
