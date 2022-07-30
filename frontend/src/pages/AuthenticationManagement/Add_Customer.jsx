@@ -34,14 +34,21 @@ function Add_Customer() {
 
     console.log("value", values);
     try {
-      const result = await request.post("CommonSignup", values);
-      console.log("api call sign up customer result ", result);
+      const result = await request.post("CommonSignup", values).then(
+
           swal({ text: "Successfully Created", icon: "success", button: "Okay!"})
               .then((value) => {
               window.location = '/All_Data';
-          });
+          })
+      )
+      
     } catch (e) {
       console.log("post create customer error ", e);
+      swal({ text: "An account has already been created for the email address you enterd. Try another email address !",
+             icon: "warning", button: "Okay!"})
+              .then((value) => {
+              window.location = '/Add_Customer';
+          });
     }
   };
 

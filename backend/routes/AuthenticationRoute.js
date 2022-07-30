@@ -8,8 +8,9 @@ const jwt = require("jsonwebtoken");
 //Insert
 router.post("/CommonSignup", async (req, res) => {
   try {
-    
-    const commonSignup = new CommonSignup(req.body);
+    const user = await CommonSignup.findOne({email:req.body.email});
+    if (user) {res.status(400).send({ message: "failed"}); } else { 
+    const commonSignup = new CommonSignup({...req.body, inputpw:"12345"}); // pw
     const savedCommonSignup = await commonSignup.save();
     if (savedCommonSignup) {
       res.status(201).send({ message: "success", data: savedCommonSignup });
@@ -17,6 +18,7 @@ router.post("/CommonSignup", async (req, res) => {
       res.status(400).send({ message: "failed", data: savedCommonSignup });
     }
     console.log("result , ", savedCommonSignup);
+  }
   } catch (err) {
     console.log("error in CommonSignup ", err);
     res.status(500).send({ message: "failed", data: err });
