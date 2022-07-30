@@ -32,17 +32,24 @@ function Add_Customer() {
     values.role = "Customer";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD");
 
-    console.log("value", values);
-    try {
-      const result = await request.post("CommonSignup", values);
-      console.log("api call sign up customer result ", result);
-          swal({ text: "Successfully Created", icon: "success", button: "Okay!"})
-              .then((value) => {
-              window.location = '/login';
-          });
-    } catch (e) {
-      console.log("post create customer error ", e);
-    }
+      console.log("value", values);
+        try {
+          const result = await request.post("CommonSignup", values).then(
+
+              swal({ text: "Successfully Created", icon: "success", button: "Okay!"})
+                  .then((value) => {
+                  window.location = '/login';
+              })
+          )
+          
+        } catch (e) {
+          console.log("post create customer error ", e);
+          swal({ text: "An account has already been created for the email address you enterd. Try another email address !",
+                icon: "warning", button: "Okay!"})
+                  .then((value) => {
+                  window.location = '/Registration';
+              });
+        }
   };
 
   
