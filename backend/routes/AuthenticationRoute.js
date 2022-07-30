@@ -10,7 +10,7 @@ router.post("/CommonSignup", async (req, res) => {
   try {
     const user = await CommonSignup.findOne({email:req.body.email});
     if (user) {res.status(400).send({ message: "failed"}); } else { 
-    const commonSignup = new CommonSignup({...req.body, inputpw:"12345"}); // pw
+    const commonSignup = new CommonSignup(req.body);
     const savedCommonSignup = await commonSignup.save();
     if (savedCommonSignup) {
       res.status(201).send({ message: "success", data: savedCommonSignup });
